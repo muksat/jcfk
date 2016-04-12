@@ -1,0 +1,22 @@
+<div class="card card-block">
+    <h5 class="card-title">{{ day.date }}</h5>
+
+    <div v-show="day.meals.length < 2" class="addMeal" v-on="click: showSelectize">
+        <i class="fa fa-plus-square"></i>
+    </div>
+    <ol class="meals_list">
+        <li v-repeat="day.meals">
+            <i  v-on="click: deleteMeal(meal_id)" class="fa fa-minus meal_delete"></i>
+            {{ meal_name }}
+        </li>
+    </ol>
+    <selectize id="selectize-meal{{ day.short_date }}"
+               v-show="showMealSearchBox"
+               label=""
+               placeholder="Pick a meal"
+               url="/admin/meal/search"
+               value-field="meal_id"
+               search-field="meal_name"
+               value="{{@ newMealId }}">
+    </selectize>
+</div>

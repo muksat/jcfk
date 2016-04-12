@@ -1,0 +1,17 @@
+<div class="control-group">
+    <label class="control-label" for="region">Province</label>
+
+    <div class="controls">
+        <select id="province" v-on="hange: fetchCitiesByRegion" v-model="region" name="province" class="input-xlarge" options="regions | selectify 'name' 'code' ">
+        </select>
+    </div>
+</div>
+
+<div v-show="region" class="control-group">
+    <label class="control-label" for="city">City</label>
+
+    <div class="controls">
+        <select id="city" v-model="cityId" name="city" class="input-xlarge" options="cities | selectify 'name' 'city_id'">
+        </select>
+    </div>
+</div>

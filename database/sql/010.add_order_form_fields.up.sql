@@ -1,0 +1,4 @@
+ALTER TABLE order_form
+ADD COLUMN `startdate` DATE NOT NULL,
+ADD COLUMN `enddate` DATE NOT NULL,
+ADD COLUMN is_published TINYINT(1) UNSIGNED NOT NULL default 0;

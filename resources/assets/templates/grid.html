@@ -1,0 +1,48 @@
+<table v-show="data" class="table table-striped table-bordered table-hover">
+    <thead>
+    <tr>
+        <th v-repeat="key: columns"
+            v-on="click:sortBy(key)"
+            v-class="active: sortKey == key">
+            {{key | capitalize | toColumn}}
+          <span class="arrow"
+                v-class="reversed[key] ? 'dsc' : 'asc'">
+          </span>
+        </th>
+        <th width="{{ 150 + actions.length * 70 }}px" v-show="!noActions">
+            Actions
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-repeat="
+        entry: data
+        | orderBy sortKey reversed[sortKey]">
+        <td v-repeat="key: columns">
+            {{entry[key]}}
+        </td>
+        <td v-show="!noActions">
+            <button v-show="showRowActions(entry)" v-repeat="actions" class="btn {{ btnClass }} btn-sm" v-on="click: callBack(entry)">{{ name }}</button>
+            <button v-show="showRowActions(entry)" class="btn btn-info btn-sm" v-on="click: editRow(entry)">Edit</button>
+            <button v-show="showRowActions(entry)" class="btn btn-danger btn-sm" v-on="click: deleteRow(entry, $event)">Delete</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<nav v-show="lastPage > 1">
+    <ul class="pagination">
+        <li v-class="disabled: currentPage <= 1" v-on="click: switchPage($event, currentPage-1)">
+            <a href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li v-repeat="lastPage" v-class="active: currentPage == $index+1"><a href="#"
+                                                                             v-on="click: switchPage($event, $index+1)">
+            {{ $index+1 }}</a></li>
+        <li v-class="disabled: currentPage >= lastPage" v-on="click: switchPage($event, currentPage+1)">
+            <a href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

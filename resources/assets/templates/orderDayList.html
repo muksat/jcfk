@@ -1,0 +1,20 @@
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <strong>Total cost: ${{ selectedMeals.length * mealPrice }} CAD</strong>
+            <button v-on="click: addToCart(selectedMeals, selectedMeals.length * mealPrice)" class="btn btn-success pull-right">Add to cart</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div v-repeat="day in days" class="card card-block">
+                <h5 class="card-title">{{ day.date }}</h5>
+                <ol class="meals_list">
+                    <li v-repeat="meal: day.meals" v-on="click: selectMeal(day, meal, $event)">
+                        {{ meal.meal_name }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>

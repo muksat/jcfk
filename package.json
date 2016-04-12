@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.8.8",
+    "laravel-elixir": "^2.0.0"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.5",
+    "font-awesome": "^4.3.0",
+    "jquery": "^2.1.4",
+    "jquery-mask-plugin": "^1.13.4",
+    "metismenu": "^2.0.2",
+    "select2-browserify": "^3.4.5",
+    "selectize": "^0.12.1",
+    "startbootstrap-sb-admin-2": "^1.0.7",
+    "vue": "^0.12.10",
+    "vue-resource": "^0.1.9",
+    "vue-router": "^0.5.2"
+  }
+}
